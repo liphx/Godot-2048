@@ -153,7 +153,7 @@ func _process(delta: float) -> void:
     $body/HBoxContainer/score.set_text(str(score))
     $body/HBoxContainer/VBoxContainer/HBoxContainer/best_score.set_text("Best\n" + str(best_score))
     if game_over:
-        $body/HBoxContainer/VBoxContainer/HBoxContainer/best_score.set_text("Game Over!")
+        $body/HBoxContainer/VBoxContainer/HBoxContainer/best_score.set_text("Game\nOver !")
 
 func _on_exit_pressed() -> void:
     get_tree().quit()
