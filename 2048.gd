@@ -179,7 +179,6 @@ func restart():
     numbers[pos2[0]][pos2[1]] = 2
     numbers_back = numbers.duplicate(true)
 
-
 func _on_save_pressed() -> void:
     save("user://2048.json")
 
