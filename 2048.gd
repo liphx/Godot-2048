@@ -67,6 +67,10 @@ func _ready() -> void:
         label.set_v_size_flags(SIZE_EXPAND_FILL)
         label.set("theme_override_font_sizes/font_size", 72)
 
+        var style = StyleBoxFlat.new()
+        style.bg_color = Color(colors[0])
+        label.add_theme_stylebox_override("normal", style)
+
         $body/GridContainer.add_child(label)
     restart()
     load_data("user://2048_autosave.json")
@@ -147,15 +151,15 @@ func _process(delta: float) -> void:
                 label.set_text(str(numbers[i][j]))
             else:
                 label.set_text("")
-            var style = StyleBoxFlat.new()
+            var style = label.get_theme_stylebox('normal')
             style.bg_color = Color(colors[color_index(numbers[i][j])])
-            label.add_theme_stylebox_override("normal", style)
     $body/HBoxContainer/score.set_text(str(score))
     $body/HBoxContainer/VBoxContainer/HBoxContainer/best_score.set_text("Best\n" + str(best_score))
     if game_over:
         $body/HBoxContainer/VBoxContainer/HBoxContainer/best_score.set_text("Game\nOver !")
 
 func _on_exit_pressed() -> void:
+    save("user://2048_autosave.json")
     get_tree().quit()
 
 
